@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ListView mainMenu;
+    private MainListViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        adapter = new MainListViewAdapter();
+
         mainMenu = (ListView)findViewById(R.id.menu_main);
-        
+
     }
 
     @Override
