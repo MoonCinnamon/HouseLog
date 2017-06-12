@@ -53,6 +53,8 @@ public class MainListViewAdapter  extends BaseAdapter {
         // 아이템 내 각 위젯에 데이터 반영
         iconImageView.setImageDrawable(listViewItem.getIcon());
         titleTextView.setText(listViewItem.getTitle());
+        if(listViewItem.getValue())
+            descTextView.setVisibility(View.GONE);
         descTextView.setText(listViewItem.getDesc());
 
         return convertView;
@@ -71,12 +73,13 @@ public class MainListViewAdapter  extends BaseAdapter {
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(Drawable icon, String title, String desc) {
+    public void addItem(Drawable icon, String title, String desc, boolean value) {
         MainListViewItem item = new MainListViewItem();
 
         item.setIcon(icon);
         item.setTitle(title);
         item.setDesc(desc);
+        item.setValue(value);
 
         listViewItemList.add(item);
     }

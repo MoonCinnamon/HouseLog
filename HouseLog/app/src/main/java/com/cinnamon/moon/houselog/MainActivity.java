@@ -1,5 +1,6 @@
 package com.cinnamon.moon.houselog;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,10 +48,23 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        FirebaseMessaging.getInstance().subscribeToTopic("notice");
+
         adapter = new MainListViewAdapter();
+        adapter.addItem(getResources().getDrawable(R.drawable.ic_menu_send,getTheme()), "현재날씨","예보",false);
+        adapter.addItem(getResources().getDrawable(R.drawable.ic_menu_camera, getTheme()),"집","에어컨 동작 중",false);
+        adapter.addItem(getResources().getDrawable(R.drawable.ic_menu_gallery, getTheme()),"온도","꿀",true);
+        adapter.addItem(getResources().getDrawable(R.drawable.ic_menu_gallery, getTheme()),"습도","꿀",true);
+        adapter.addItem(getResources().getDrawable(R.drawable.ic_menu_gallery, getTheme()),"불쾌지수","꿀",true);
+        adapter.addItem(getResources().getDrawable(R.drawable.ic_menu_gallery, getTheme()),"수면","꿀",true);
+        adapter.addItem(getResources().getDrawable(R.drawable.ic_menu_gallery, getTheme()),"불 켜진 시간","꿀",true);
+        adapter.addItem(getResources().getDrawable(R.drawable.ic_menu_gallery, getTheme()),"온도","꿀",true);
 
         mainMenu = (ListView)findViewById(R.id.menu_main);
+        mainMenu.setAdapter(adapter);
 
+        Intent newpage = new Intent(getApplicationContext(), DataActivity.class);
+        startActivity(newpage);
     }
 
     @Override

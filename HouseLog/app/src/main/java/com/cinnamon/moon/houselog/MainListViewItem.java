@@ -10,6 +10,7 @@ public class MainListViewItem {
     private Drawable iconDrawable;
     private String titleStr;
     private String descStr;
+    private boolean value;
 
     public void setIcon(Drawable icon) {
         iconDrawable = icon;
@@ -23,6 +24,8 @@ public class MainListViewItem {
         descStr = desc;
     }
 
+    public void setValue(boolean value){this.value = value;}
+
     public Drawable getIcon() {
         return this.iconDrawable;
     }
@@ -34,4 +37,6 @@ public class MainListViewItem {
     public String getDesc() {
         return this.descStr;
     }
+
+    public boolean getValue(){return this.value;}
 }
