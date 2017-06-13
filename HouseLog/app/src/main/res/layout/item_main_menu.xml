@@ -6,7 +6,8 @@
     <ImageView
         android:id="@+id/list_image"
         android:layout_width="24dp"
-        android:layout_height="24dp" />
+        android:layout_height="24dp"
+        android:visibility="gone"/>
     <TextView
         android:id="@+id/main_text"
         android:layout_margin="3dp"

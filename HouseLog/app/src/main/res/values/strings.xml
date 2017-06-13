@@ -6,4 +6,11 @@
 
     <string name="action_settings">Settings</string>
     <string name="today_w">현재 날씨 : </string>
+    <string name="house">집</string>
+    <string name="aircon">에어컨 자동 동작중</string>
+    <string name="aricon_d">에어컨 자동 동작중 아님</string>
+    <string name="temp">온도</string>
+    <string name="reh">습도</string>
+    <string name="thi">불쾌지수</string>
+    <string name="rain">강수확률</string>
 </resources>

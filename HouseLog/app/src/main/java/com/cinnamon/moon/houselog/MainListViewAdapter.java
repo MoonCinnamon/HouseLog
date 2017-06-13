@@ -15,9 +15,9 @@ import java.util.ArrayList;
  * Created by Cinnmon on 2017. 6. 7..
  */
 
-public class MainListViewAdapter  extends BaseAdapter {
+public class MainListViewAdapter extends BaseAdapter {
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
-    private ArrayList<MainListViewItem> listViewItemList = new ArrayList<MainListViewItem>() ;
+    private ArrayList<MainListViewItem> listViewItemList = new ArrayList<MainListViewItem>();
 
     // ListViewAdapter의 생성자
     public MainListViewAdapter() {
@@ -27,7 +27,7 @@ public class MainListViewAdapter  extends BaseAdapter {
     // Adapter에 사용되는 데이터의 개수를 리턴. : 필수 구현
     @Override
     public int getCount() {
-        return listViewItemList.size() ;
+        return listViewItemList.size();
     }
 
     // position에 위치한 데이터를 화면에 출력하는데 사용될 View를 리턴. : 필수 구현
@@ -43,9 +43,9 @@ public class MainListViewAdapter  extends BaseAdapter {
         }
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
-        ImageView iconImageView = (ImageView) convertView.findViewById(R.id.list_image) ;
-        TextView titleTextView = (TextView) convertView.findViewById(R.id.main_text) ;
-        TextView descTextView = (TextView) convertView.findViewById(R.id.sub_text) ;
+        ImageView iconImageView = (ImageView) convertView.findViewById(R.id.list_image);
+        TextView titleTextView = (TextView) convertView.findViewById(R.id.main_text);
+        TextView descTextView = (TextView) convertView.findViewById(R.id.sub_text);
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         MainListViewItem listViewItem = listViewItemList.get(position);
@@ -53,7 +53,7 @@ public class MainListViewAdapter  extends BaseAdapter {
         // 아이템 내 각 위젯에 데이터 반영
         iconImageView.setImageDrawable(listViewItem.getIcon());
         titleTextView.setText(listViewItem.getTitle());
-        if(listViewItem.getValue())
+        if (listViewItem.getValue())
             descTextView.setVisibility(View.GONE);
         descTextView.setText(listViewItem.getDesc());
 
@@ -63,13 +63,13 @@ public class MainListViewAdapter  extends BaseAdapter {
     // 지정한 위치(position)에 있는 데이터와 관계된 아이템(row)의 ID를 리턴. : 필수 구현
     @Override
     public long getItemId(int position) {
-        return position ;
+        return position;
     }
 
     // 지정한 위치(position)에 있는 데이터 리턴 : 필수 구현
     @Override
     public Object getItem(int position) {
-        return listViewItemList.get(position) ;
+        return listViewItemList.get(position);
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
@@ -82,5 +82,15 @@ public class MainListViewAdapter  extends BaseAdapter {
         item.setValue(value);
 
         listViewItemList.add(item);
+    }
+
+    public void set(Drawable icon, String title, String desc, boolean value) {
+        MainListViewItem item = new MainListViewItem();
+
+        item.setIcon(icon);
+        item.setTitle(title);
+        item.setDesc(desc);
+        item.setValue(value);
+        listViewItemList.set(5, item);
     }
 }
